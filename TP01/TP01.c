@@ -14,13 +14,13 @@
 //menu de ocpiones
 void menu(void)
 {
-    int opcion;
+
+    char opcion;
     int flagResultado;
     int flagCalculo;
     int flagA;
     int flagB;
     int flagON;
-    int flagOFF;
     int div0;
     float num1;
     float num2;
@@ -31,14 +31,13 @@ void menu(void)
     long long int resultadoFA;
     long long int resultadoFB;
 
+
     //asignacion de valores iniciales
     flagResultado = 0;
     flagCalculo = 0;
     flagA = 0;
     flagB = 0;
     flagON = 1;
-    flagOFF = 0;
-
 
     //Iteracion de Menu
     while (flagON == 1)
@@ -71,26 +70,33 @@ void menu(void)
         printf("\n 4. Informar resultados");
         printf("\n 5. Salir");
         printf("\n +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+\n");
+        printf("\n Solo se tomara el primer caracter ingresado \n");
         printf("\n Ingrese su Opcion: "); //pido valor de opcion
-        scanf("%d", &opcion);
+        scanf("%c", &opcion);
 
         //determinacion del tipo de opcion elegida
         switch(opcion)
         {
-        case 1://asignacion del primer operador
+        case '1'://asignacion del primer operador
+            //validar num1
+
             printf("\n Ingrese el valor para el 1er operador: ");
             scanf("%f", &num1);
             flagA = 1;
+            fflush(stdin);
             break;
 
-        case 2://asignacion del segundo operador
+        case '2'://asignacion del segundo operador
+            //validar num2
             printf("\n Ingrese el valor para el 2do operador: ");
             scanf("%f", &num2);
             flagB = 1;
+            fflush(stdin);
             break;
 
-        case 3: //invoco funciones de calculo
-            if (flagA != 1 && flagB != 1) //verifico que estén ambos operadores cargados
+        case '3': //invoco funciones de calculo
+
+            if (flagA != 1 && flagB != 1) //verifico que estÃ©n ambos operadores cargados
             {
                 printf("\n Por Favor Ingrese todos los Operadores\n");
                 system("pause");
@@ -119,9 +125,10 @@ void menu(void)
                 }
                 printf("\n Calculando...\n");
                 system("pause");
+            fflush(stdin);
             break;
 
-        case 4://emito resultados en pantalla
+        case '4'://emito resultados en pantalla
             if (flagResultado == 0)
             {
                 printf("\n Por Favor ejecute primero las operaciones\n");
@@ -141,8 +148,9 @@ void menu(void)
                 }
 
                 printf("\n El resultado del producto de A= %g y de B= %g es : %g \n", num1, num2, resultadoP);
-                printf("\n El resultado del factorial de A= %g es : %llu \n", num1, resultadoFA);
-                printf("\n El resultado del factorial de B= %g es : %llu \n", num2, resultadoFB);
+
+                printf("\n El resultado del factorial de A= %g es : %I64u \n", num1, resultadoFA);
+                printf("\n El resultado del factorial de B= %g es : %I64u \n", num2, resultadoFB);
 
                 flagResultado = 0;
                 flagCalculo = 0;
@@ -151,22 +159,23 @@ void menu(void)
                 div0 = 0;
                 system("pause");
             }
+            fflush(stdin);
             break;
 
-        case 5://cambio la bandera de ingreso a la iteracion para cortar el ciclo
-            flagOFF = 1;
+        case '5'://cambio la bandera de ingreso a la iteracion para cortar el ciclo
+            flagON = 0;
             printf("\n Cerrando Programa\n");
+            fflush(stdin);
             break;
 
         default : //pido opcion nuevamente en caso que el input sea distinto de las opciones disponibles
-            printf("\n Opcion Invalida, reingrese opcion: ");
-            scanf("%d", &opcion);
+            printf("\n Opcion Invalida \n Reingrese opcion: ");
+            printf("\n Solo se tomara el primer caracter ingresado \n");
+            scanf("%c", &opcion);
+            fflush(stdin);
             break;
         }
-        if (flagOFF == 1)
-        {
-            flagON = 0;
-        }
+        fflush(stdin);
     }
 
 }
@@ -220,10 +229,16 @@ unsigned long long int factorial(float num)
 {
     unsigned long long int resultado;
 
-
-    if (num < 0)
+    //validar menores a 11
+    if (num < 0 )
     {
         printf("\n No se puede realizar el factorial de un numero menor a 0");
+        resultado = 0;
+    }
+    else if (num >11)
+    {
+         printf("\n Este programa no puede realizar el factorial de un numero superior a 11");
+         resultado = 0;
     }
     else
     {
