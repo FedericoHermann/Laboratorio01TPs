@@ -1,3 +1,10 @@
+/*
+ * main.c
+ *
+ *  Created on: 28 mar. 2021
+ *      Author: FeDuS
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -6,9 +13,9 @@
 
 /*==========================================================
  *====                                                  ====
- *====             Trabajo Práctico nº 01               ====
+ *====             Trabajo PrÃ¡ctico nÂº 01               ====
  *====                Hermann Federico                  ====
- *====                  División 1ºG                    ====
+ *====                  DivisiÃ³n 1ÂºG                    ====
  *====                                                  ====
  *==========================================================
  */
