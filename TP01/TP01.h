@@ -62,11 +62,12 @@ float division(float num1, float num2);
 
 
 
-/** \brief Devuelve el factorial de un número
+/** \brief Devuelve el factorial de un nÃºmero
  *
  * \param num float
  * \return unsigned long long resultado
  *
  */
 unsigned long long int factorial(float num);
+
 
